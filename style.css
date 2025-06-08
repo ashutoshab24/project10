@@ -63,8 +63,8 @@ body {
 }
 
 [class^=col-] {
-  flex: 1 0 auto;
   padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .col-1 {
@@ -78,10 +78,9 @@ body {
 }
 
 .col-3 {
-  flex-basis: 25%;
+  flex: 0 0 25%;
   max-width: 25%;
 }
-
 .col-4 {
   flex-basis: 33.33%;
   max-width: 33.33%;
@@ -93,7 +92,7 @@ body {
 }
 
 .col-6 {
-  flex-basis: 50%;
+  flex: 0 0 50%;
   max-width: 50%;
 }
 
@@ -123,7 +122,7 @@ body {
 }
 
 .col-12 {
-  flex-basis: 100%;
+  flex: 0 0 100%;
   max-width: 100%;
 }
 
@@ -278,14 +277,14 @@ position: fixed;
     line-height: 1.5;}
 .wrap-2 p{color: #898a8b;margin:14px 0 11px 0;font-size: 24px}
 .wrap-2 .text-1{
-  margin-top:180px;
+  margin-top:2px;
    font-size: 32px;
   font-weight: bold;
 
 }
 
 .section {
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateY(50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -535,26 +534,53 @@ display: block;
   background-size: 100% 100%;
   
 }
-
 .wrap-10{
-  padding:32px;
-  margin-top:153px;
+  margin:44px;
 }
-.wrap-10 h3 {
+ .wrap-10 h3 {
     margin: 5px;
-    margin-top:210px;
+    margin-top: 78px;
+  }
+  
+  .wrap-10 .gallery {
+    margin-top: 320px;
+    display: block;
+    text-align: center;
+    
+  }
+img.responsive-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 4px;
+}
+  /* NEW: Added column stacking for tablets */
+ .wrap-10 .col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+  box-sizing: border-box;
+  padding: 0 8px;
 }
 
-.wrap-10 .gallery{
-  margin-top:150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-}
 .wrap-10 .para-3{
   margin: 20px;
+}
+/* .wrap-10 .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+} */
+
+
+.wrap-10 [class^="col-"] {
+  padding: 0 8px; /* Reduced padding to match */
+}
+.wrap-10 .col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 8px;
 }
 .wrap-11{
   padding:32px;
@@ -748,7 +774,7 @@ button:hover {
 @media screen and (max-width:1220px){ */
   html{font-size: 14px;}
   .wrap-10{
- 
+    margin: 55px;
     margin-top: -78px;
 }
   .wrap-11 .map {
@@ -763,14 +789,24 @@ button:hover {
 
 
 @media screen and (max-width:980px){
-   /* .col-m-12{flex-basis: 100%; max-width: 100%;} */
-     /* .col-m-6{ flex-basis: 50%;max-width: 50%;} */
+   .col-m-12{max-width: 100%;}
+     .col-m-6{ flex-basis: 50%;max-width: 50%;} 
   .collapse{display: none;}
   .hide-desktop{display: flex;justify-content: flex-end;}
 
-  .nav-list{display: block;text-align: center;}}
+  .nav-list{display: block;text-align: center;}
 .wrap-2 .text-1 {
     margin-top: 31px;
+}
+/* img {
+  width: 100%;
+  height: auto;
+  display: block;
+} */
+.image-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
   .wrap-8 .test{
     text-align: center;
@@ -781,14 +817,30 @@ button:hover {
     background-size: 100% 100%;
     
   }
+ .wrap-10 h3 {
+  text-align: center;
+  margin: 40px 0 10px;
+  font-size: 1.8rem;
+}
   .wrap-10 .gallery {
-    margin-top:15px;
+    margin-top: 171px;
+  }
   
-}
-.wrap-10 h3 {
-    margin: 5px;
-    margin-top: 18px;
-}
+  .wrap-10 img,
+  .responsive-img {
+    width: 100%;        /* Changed from 100vw */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin: 4px 0;      /* Added proper margin */
+  }
+  
+  /* NEW: Added column stacking for tablets */
+.wrap-10 .col-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
   .wrap-11 .forms {
     width: 100%;
     margin-top: 244px;
@@ -803,13 +855,14 @@ button:hover {
     border-radius: 30px;
     margin-top: 10px;
 }
-  
 
+  
+}
 @media screen and (max-width:767px){
   .collapse{display: none;}
   html{ font-size: 10px; }
-  /* .col-m-12{flex-basis: 100%; max-width: 100%;} */
-  /* .col-m-6{ flex-basis: 50%;max-width: 50%;} */
+  .col-m-12{flex-basis: 100%; max-width: 100%;}
+  .col-m-6{ flex-basis: 50%;max-width: 50%;}
   .nav-list{display: block;text-align: center;}
    .collapse{display: none;}
   .hide-desktop{display: flex;justify-content: flex-end;}
@@ -848,17 +901,36 @@ button {
   background-size: 100% 100%;
   
 }
-.wrap-10{
-margin-top:-209px;
-}
-.wrap-10 h3 {
+.wrap-10 {
+    margin-top: -209px;
+    padding: 16px; /* NEW: Reduced padding for mobile */
+  }
+  
+  .wrap-10 h3 {
     margin: 5px;
     margin-top: 122px;
-}
-.wrap-10 .gallery {
-  margin-top: 6px;
-
-}
+  }
+  
+  .wrap-10 .gallery {
+    margin-top: 6px;
+  }
+  
+  /* NEW: Added proper mobile image styling */
+  .wrap-10 img,
+  .responsive-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    margin: 8px 0;
+  }
+  
+  /* NEW: Full width columns on mobile */
+   .wrap-10 .col-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
     .wrap-11 .map img {
         height: 33vh;
         margin-top: -35px;
@@ -930,18 +1002,32 @@ margin-top: -63px;
  display: none;
   
 }
-    .wrap-10 {
-        margin-top: -200pxpx;}
+  .wrap-10 {
+    margin-top: -200px; /* Fixed typo: removed extra 'px' */
+    padding: 12px;      /* NEW: Further reduced padding */
+  }
+  
+  .wrap-10 .gallery {
+    margin-top: -312px;
+  }
+  
+  .wrap-10 h3 {
+    margin: 5px;
+    margin-top: 454px;
+  }
+  
+  /* NEW: Added proper very small screen image styling */
+  .wrap-10 img,
+  .responsive-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    margin: 10px 0;
+    border-radius: 4px; /* Optional: slight rounding */
+  }
 
-    .wrap-10 .gallery {
-        margin-top: -312px;
-    }
-        .wrap-10 h3
-{
-        margin: 5px;
-        margin-top: 454px;
-    }
-}
 .wrap-13 .icons-media{
   display: flex;
   gap:1px;
@@ -965,4 +1051,4 @@ button {
 }
 
 
-
+}
